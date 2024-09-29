@@ -308,9 +308,9 @@ class SparseTrainerMixin:
                 metrics = self.evaluate(eval_dataset=self.eval_dataset, ignore_keys=ignore_keys_for_eval, metric_key_prefix="eval")
                 self._report_to_hp_search(trial, epoch, metrics)
 
-        if self.control.should_save:
-            self._save_checkpoint(model, trial, metrics=metrics)
-            self.control = self.callback_handler.on_save(self.args, self.state, self.control)
+        # if self.control.should_save:
+        #     self._save_checkpoint(model, trial, metrics=metrics)
+        #     self.control = self.callback_handler.on_save(self.args, self.state, self.control)
     
     def is_main_process(self):
         return self.args.local_rank in [0, -1]
